@@ -13,7 +13,7 @@ export const KodUString = {
   JPY: ["Japanski jen", "Japanskih jena"],
 };
 
-export const ikone = {
+export const Ikone = {
   RSD: "rs.svg",
   EUR: "eu.svg",
   USD: "us.svg",

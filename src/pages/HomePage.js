@@ -53,8 +53,9 @@ function HomePage() {
   };
 
   return (
-    <div className="container  grid mx-auto gap-8 relative p-10 sm:px-60 main-container">
-      <h1 className="webpage-title text-center text-white ">BARKODE EXCANGE</h1>
+    <div className="container grid mx-auto gap-8 relative p-10 sm:px-60 main-container">
+      <h1 className="webpage-title text-center text-white">BARKOD EXCHANGE</h1>
+
       <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
         {/* Konverzija */}
         <div className="flex flex-col sm:flex-row gap-4 w-full items-end ">
@@ -132,7 +133,11 @@ function HomePage() {
             </span>
             <span className="text-gray-500">
               {vremeKonverzije != null && (
-                <>Vreme konverzije: {vremeKonverzije.getMilliseconds()}</>
+                <>
+                  Vreme konverzije:{" "}
+                  {vremeKonverzije.toISOString().slice(11).slice(0, 5)}s{" "}
+                  {vremeKonverzije.toISOString().slice(11).slice(6, 8)}ms
+                </>
               )}
             </span>
           </div>
@@ -141,7 +146,7 @@ function HomePage() {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8  ">
         <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
           <h2>Trenurne kvote:</h2>
           <TrenurneKvore />
