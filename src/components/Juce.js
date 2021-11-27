@@ -19,11 +19,14 @@ const gore = (
     d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"
   />
 );
-const dore = (
+const dole = (
   <path
     xmlns="http://www.w3.org/2000/svg"
     d="M16 18l2.29-2.29-4.88-4.88-4 4L2 7.41 3.41 6l6 6 4-4 6.3 6.29L22 12v6h-6z"
   />
+);
+const srednje = (
+  <path xmlns="http://www.w3.org/2000/svg" d="M22 12l-4-4v3H3v2h15v3l4-4z" />
 );
 
 function Juce() {
@@ -52,20 +55,18 @@ function Juce() {
       const rast = danasValuta > juceValuta;
       const ista = danasValuta == juceValuta;
 
-      const boja = rast
-        ? "text-green-700"
-        : ista
-        ? "text-gray-700"
-        : "text-red-700";
+      const boja = ["text-green-700", "text-gray-700", "text-red-700"];
+      const ikonica = [gore, srednje, dole];
+
+      const index = rast ? 0 : ista ? 1 : 2;
       const procenat = (danasValuta / juceValuta) * 100 - 100;
 
       t.push(
         <>
           <div className={`${boja}`}>
             <span>
-              <SVGComp> {gore}</SVGComp>
+              <SVGComp fill=""> {ikonica[index]}</SVGComp>
             </span>
-            |
             <div>
               <span>{procenat.toFixed(3)}% </span>
             </div>
