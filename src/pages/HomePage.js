@@ -46,19 +46,15 @@ function HomePage() {
     pozoviServer();
   }, [konIz, konU]);
 
-  const pozoviServer = async (time) => {
-    if (time) await new Promise((resolve) => setTimeout(resolve, time));
-
-    const rez = await axios.get(
-      `conversion?from=${konIz}&to=${konU}&amount=${kolicina}`
-    );
-    setRezultat(rez.data["result"].toFixed(2));
-    console.log(rez.data);
+  const pozoviServer = async () => {
+    const rez = await axios.get(`conversion?from=${konIz}&to=${konU}&amount=1`);
+    setRezultat(rez.data["result"] * kolicina);
     setVremeKonverzije(new Date(rez.data["info"]["timestamp"] * 1000));
   };
 
   return (
-    <div className="container grid mx-auto gap-8 relative ">
+    <div className="container grid mx-auto gap-8 relative p-10 sm:p-60 sm:mt-10 main-container">
+      <div className="bg-primery absolute h-[20wh] w-screen"></div>
       <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
         {/* Konverzija */}
         <div className="flex flex-col sm:flex-row gap-4 w-full items-end ">
@@ -68,7 +64,8 @@ function HomePage() {
               type="text"
               value={kolicina}
               onChange={(e) => {
-                setKolicina(e.target.value);
+                const data = e.target.value;
+                setKolicina(data);
               }}
               className="form-input mt-1 block w-full"
               placeholder="1.00"
