@@ -2,15 +2,28 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { getYesterday, Kodovi } from "../util";
 
-const SVG = (props) => (
+const SVGComp = ({ children, fill }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
     viewBox="0 0 24 24"
     width="24px"
+    fill={fill}
   >
-    {props.children}
+    {children}
   </svg>
+);
+const gore = (
+  <path
+    xmlns="http://www.w3.org/2000/svg"
+    d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"
+  />
+);
+const dore = (
+  <path
+    xmlns="http://www.w3.org/2000/svg"
+    d="M16 18l2.29-2.29-4.88-4.88-4 4L2 7.41 3.41 6l6 6 4-4 6.3 6.29L22 12v6h-6z"
+  />
 );
 
 function Juce() {
@@ -49,10 +62,12 @@ function Juce() {
       t.push(
         <>
           <div className={`${boja}`}>
-            <span>{kod}</span> |
+            <span>
+              <SVGComp> {gore}</SVGComp>
+            </span>
+            |
             <div>
-              {" "}
-              <span>{procenat.toFixed(3)}% </span>{" "}
+              <span>{procenat.toFixed(3)}% </span>
             </div>
           </div>
         </>
