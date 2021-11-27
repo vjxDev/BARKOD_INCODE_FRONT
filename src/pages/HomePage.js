@@ -25,6 +25,7 @@ function HomePage() {
   const [konIz, setKonIz] = useState("EUR");
   const [konU, setKonU] = useState("RSD");
   const [kolicina, setKolicina] = useState(1);
+  const [datum, setDatum] = useState(Date.now().toString());
 
   const [rezultat, setRezultat] = useState("");
 
@@ -126,6 +127,18 @@ function HomePage() {
           </label>
         </div>
         {/* Rzultat */}
+        
+        <label className=" input-text">
+          <input
+              type="date"
+              value={datum.toString()}
+              onChange={(e) => {
+                setDatum(e.target.value);
+              }}
+              className="form-input mt-1"
+              placeholder="1.00"
+            />
+          </label>
 
         <div className="flex gap-4 flex-col-reverse sm:flex-row justify-between sm:items-end  ">
           <div className="grid gap-1">
