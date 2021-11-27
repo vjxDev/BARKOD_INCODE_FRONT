@@ -25,7 +25,7 @@ function HomePage() {
   const [konIz, setKonIz] = useState("EUR");
   const [konU, setKonU] = useState("RSD");
   const [kolicina, setKolicina] = useState(1);
-  const [datum, setDatum] = useState(Date.now().toString());
+  const [datum, setDatum] = useState();
 
   const [rezultat, setRezultat] = useState("");
 
@@ -45,10 +45,17 @@ function HomePage() {
 
   useEffect(() => {
     pozoviServer();
-  }, [konIz, konU]);
+  }, [konIz, konU, datum]);
 
   const pozoviServer = async () => {
-    const rez = await axios.get(`conversion?from=${konIz}&to=${konU}&amount=1`);
+    let d = "";
+    if (datum) {
+      d = "&date=" + new Date(datum).toISOString().slice(0, 10);
+      console.log(d);
+    }
+    const rez = await axios.get(
+      `conversion?from=${konIz}&to=${konU}&amount=1${d}`
+    );
     setRezultat(rez.data["result"] * kolicina);
     setVremeKonverzije(new Date(rez.data["info"]["timestamp"] * 1000));
   };
@@ -123,18 +130,18 @@ function HomePage() {
           </label>
         </div>
         {/* Rzultat */}
-        
+
         <label className=" input-text">
           <input
-              type="date"
-              value={datum.toString()}
-              onChange={(e) => {
-                setDatum(e.target.value);
-              }}
-              className="form-input mt-1"
-              placeholder="1.00"
-            />
-          </label>
+            type="date"
+            value={datum}
+            onChange={(e) => {
+              setDatum(e.target.value);
+            }}
+            className="form-input mt-1"
+            placeholder="1.00"
+          />
+        </label>
 
         <div className="flex gap-4 flex-col-reverse sm:flex-row justify-between sm:items-end  ">
           <div className="grid gap-1">
