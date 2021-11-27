@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/BARKOD_INCODE_FRONT/static/css/main.d40e6001.chunk.css",
-    "main.js": "/BARKOD_INCODE_FRONT/static/js/main.4df2bb2a.chunk.js",
-    "main.js.map": "/BARKOD_INCODE_FRONT/static/js/main.4df2bb2a.chunk.js.map",
+    "main.css": "/BARKOD_INCODE_FRONT/static/css/main.35dca41c.chunk.css",
+    "main.js": "/BARKOD_INCODE_FRONT/static/js/main.03511b2b.chunk.js",
+    "main.js.map": "/BARKOD_INCODE_FRONT/static/js/main.03511b2b.chunk.js.map",
     "runtime-main.js": "/BARKOD_INCODE_FRONT/static/js/runtime-main.f05d55c2.js",
     "runtime-main.js.map": "/BARKOD_INCODE_FRONT/static/js/runtime-main.f05d55c2.js.map",
     "static/js/2.a7f6f040.chunk.js": "/BARKOD_INCODE_FRONT/static/js/2.a7f6f040.chunk.js",
     "static/js/2.a7f6f040.chunk.js.map": "/BARKOD_INCODE_FRONT/static/js/2.a7f6f040.chunk.js.map",
     "index.html": "/BARKOD_INCODE_FRONT/index.html",
-    "static/css/main.d40e6001.chunk.css.map": "/BARKOD_INCODE_FRONT/static/css/main.d40e6001.chunk.css.map",
+    "static/css/main.35dca41c.chunk.css.map": "/BARKOD_INCODE_FRONT/static/css/main.35dca41c.chunk.css.map",
     "static/js/2.a7f6f040.chunk.js.LICENSE.txt": "/BARKOD_INCODE_FRONT/static/js/2.a7f6f040.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f05d55c2.js",
     "static/js/2.a7f6f040.chunk.js",
-    "static/css/main.d40e6001.chunk.css",
-    "static/js/main.4df2bb2a.chunk.js"
+    "static/css/main.35dca41c.chunk.css",
+    "static/js/main.03511b2b.chunk.js"
   ]
 }
