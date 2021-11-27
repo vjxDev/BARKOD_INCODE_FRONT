@@ -1,14 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getYesterday, Kodovi } from "../util";
 
-const SVGComp = ({ children, fill }) => (
+const SVGComp = ({ children, fill, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
     viewBox="0 0 24 24"
     width="24px"
     fill={fill}
+    className={className}
   >
     {children}
   </svg>
@@ -28,50 +29,45 @@ const dole = (
 const srednje = (
   <path xmlns="http://www.w3.org/2000/svg" d="M22 12l-4-4v3H3v2h15v3l4-4z" />
 );
-
-function Juce() {
+function TrenurneKvore() {
   const [niz, setNiz] = useState([]);
 
   useEffect(() => {
     console.log("Alo");
-    uporediSaJuce();
+    jednom();
   }, []);
 
-  const uporediSaJuce = async () => {
+  const jednom = async () => {
     let t = [];
     for (const kod of Kodovi) {
       if (kod === "RSD") continue;
-      const danas = await axios.get(`conversion?from=RSD&to=${kod}&amount=1`);
+      const danas = await axios.get(`conversion?from=${kod}&to=RSD&amount=1`);
+      const danasValuta = danas.data["result"];
 
       const juceDatum = getYesterday(true).toISOString().slice(0, 10);
-
       const juce = await axios.get(
         `conversion?from=RSD&to=${kod}&amount=1&date=${juceDatum}`
       );
-
-      const danasValuta = danas.data["result"];
       const juceValuta = juce.data["result"];
 
       const rast = danasValuta > juceValuta;
       const ista = danasValuta == juceValuta;
-
       const boja = ["text-green-700", "text-gray-700", "text-red-700"];
+      const b = ["green", "gray", "red"];
       const ikonica = [gore, srednje, dole];
 
       const index = rast ? 0 : ista ? 1 : 2;
       const procenat = (danasValuta / juceValuta) * 100 - 100;
 
       t.push(
-        <>
-          <div className={`${boja}`}>
-            <span>
-              <SVGComp fill=""> {ikonica[index]}</SVGComp>
-            </span>
-            <div>
-              <span>{procenat.toFixed(3)}% </span>
-            </div>
-          </div>
-        </>
+        <div className="flex p-4 bg-white border-primery border-2 rounded-xl items-center justify-between">
+          <span>
+            1 <b>{kod}</b> = {danasValuta.toFixed(2)} <b>RSD</b>
+          </span>
+          <SVGComp className=" w-12 h-12" fill={b[index]}>
+            {ikonica[index]}
+          </SVGComp>
+        </div>
       );
     }
     setNiz(t);
@@ -79,4 +75,4 @@ function Juce() {
   return niz;
 }
 
-export default Juce;
+export default TrenurneKvore;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Juce from "../components/Juce";
+import TrenurneKvore from "../components/TrenurneKvore";
 import { KodUString } from "../util";
 
 const Opcije = () => {
@@ -59,7 +59,6 @@ function HomePage() {
 
   return (
     <div className="container grid mx-auto gap-8 relative ">
-      <div className="bg-primery absolute h-[20wh] w-screen"></div>
       <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
         {/* Konverzija */}
         <div className="flex flex-col sm:flex-row gap-4 w-full items-end ">
@@ -145,8 +144,11 @@ function HomePage() {
           </button>
         </div>
       </div>
-      <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
-        <Juce />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
+          <h2>Trenurne kvote:</h2>
+          <TrenurneKvore />
+        </div>
       </div>
     </div>
   );
