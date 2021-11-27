@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 
 function Konverzija() {
-  const [konIz, setKonIz] = useState("RSD");
-  const [konU, setKonU] = useState("EUR");
+  const [konIz, setKonIz] = useState("EUR");
+  const [konU, setKonU] = useState("RSD");
 
-  const ref = useRef();
+  const [kolicina, setKolicina] = useState(1);
 
   const rotiraj = () => {
     const temp = konIz;
@@ -18,14 +18,28 @@ function Konverzija() {
         <span class="text-gray-700">Količina:</span>
         <input
           type="text"
-          multiple
+          value={kolicina}
+          onChange={(e) => {
+            setKolicina(e.target.value);
+          }}
           class="form-input mt-1 block w-full"
           placeholder="1.00"
         />
       </label>
       <label className=" input-text">
         <span class="text-gray-700">Konverzija iz:</span>
-        <select class="form-select mt-1 block w-full">
+        <select
+          class="form-select mt-1 block w-full"
+          value={konIz}
+          onChange={(e) => {
+            const novoIz = e.target.value;
+            if (novoIz === konU) {
+              rotiraj();
+            } else {
+              setKonIz(novoIz);
+            }
+          }}
+        >
           <option>RSD</option>
           <option>EUR</option>
           <option>USD</option>
@@ -48,7 +62,18 @@ function Konverzija() {
       </button>
       <label className=" input-text">
         <span class="text-gray-700">Konverzija u:</span>
-        <select class="form-select mt-1 block w-full">
+        <select
+          class="form-select mt-1 block w-full"
+          value={konU}
+          onChange={(e) => {
+            const novoU = e.target.value;
+            if (novoU === konIz) {
+              rotiraj();
+            } else {
+              setKonU(novoU);
+            }
+          }}
+        >
           <option>RSD</option>
           <option>EUR</option>
           <option>USD</option>
