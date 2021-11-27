@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Konverzija() {
   const [konIz, setKonIz] = useState("RSD");
   const [konU, setKonU] = useState("EUR");
+
+  const ref = useRef();
+
+  const rotiraj = () => {
+    const temp = konIz;
+    setKonIz(konU);
+    setKonU(temp);
+  };
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 w-full items-end ">
@@ -17,14 +25,17 @@ function Konverzija() {
       </label>
       <label className=" input-text">
         <span class="text-gray-700">Konverzija iz:</span>
-        <input
-          type="text"
-          multiple
-          class="form-input mt-1 block w-full"
-          placeholder="john@example.com"
-        />
+        <select class="form-select mt-1 block w-full">
+          <option>RSD</option>
+          <option>EUR</option>
+          <option>USD</option>
+          <option>JPY</option>
+        </select>
       </label>
-      <button className="grid items-center justify-center h-12 w-full sm:w-auto rounded-full  bg-primery text-white ">
+      <button
+        onClick={rotiraj}
+        className="grid items-center justify-center h-12 w-full sm:w-auto rounded-full  bg-primery text-white "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-8 h-8 mx-2"
@@ -37,12 +48,12 @@ function Konverzija() {
       </button>
       <label className=" input-text">
         <span class="text-gray-700">Konverzija u:</span>
-        <input
-          type="text"
-          multiple
-          class="form-input mt-1 block w-full"
-          placeholder="1 Eur"
-        />
+        <select class="form-select mt-1 block w-full">
+          <option>RSD</option>
+          <option>EUR</option>
+          <option>USD</option>
+          <option>JPY</option>
+        </select>
       </label>
     </div>
   );

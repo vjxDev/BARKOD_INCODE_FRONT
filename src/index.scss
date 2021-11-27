@@ -11,7 +11,8 @@ html {
 
 .input-text {
   @apply grid w-full;
-  input {
+  input,
+  select {
     @apply rounded-md border-2 border-primery;
     &:focus {
       @apply border-gray-900 ring-primery;
