@@ -4,6 +4,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.scss";
 
+import axios from "axios";
+
+axios.defaults.baseURL = "https://barkod-incode-back.herokuapp.com/api";
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
