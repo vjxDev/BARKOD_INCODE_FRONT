@@ -59,7 +59,7 @@ function HomePage() {
 
   return (
     <div className="container grid mx-auto gap-8 relative p-10 sm:px-60 sm:mt-10 main-container">
-      <h1 className="webpage-title text-center">BARKODE EXCANGE</h1>
+      <h1 className="webpage-title text-center">BARKOD EXCHANGE</h1>
       <div className="bg-primery absolute h-[20wh] w-screen"></div>
       <div className="grid p-8 gap-8 bg-white border-primery border-2 rounded-xl">
         {/* Konverzija */}
